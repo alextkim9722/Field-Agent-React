@@ -8,8 +8,6 @@ function AddFieldAgent({ handleAdd, handleCancel }) {
   const [heightInInches, setHeightInInches] = useState('');
   const [errors, setErrors] = useState([]);
 
-  let valid = true;
-
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   }
@@ -30,67 +28,41 @@ function AddFieldAgent({ handleAdd, handleCancel }) {
     setHeightInInches(event.target.value);
   }
 
-  const checkForValidDate = (event) => {
-    let input = event.target.value;
-    if(input.charAt(4) !== '-' || input.charAt(7) !== '-'
-    || isNaN(input.substring(0,4)) || isNaN(input.substring(5,7)) || isNaN(input.substring(8,11))
-    || input.substring(0,4) === '' || input.substring(5,7) === '' || input.substring(8,11) === ''
-    || input.length === 11) {
-      if(isNaN(Date.parse(input))){
-        alert("Date must be in YYYY-MM-DD format");
-        valid = false;
-      }
-    }else{
-      valid = true;
-    }
-  }
-
-  const checkForHeightInInches = (event) => {
-    if(isNaN(event.target.value)) {
-      alert("Input must be a number.")
-      valid = false;
-    }else{
-      valid = true;
-    }
-  }
-
   const handleSubmit = (event) => {
-    if(valid){
-      const newFieldAgent = {
-        firstName,
-        middleName,
-        lastName,
-        dob,
-        heightInInches
-      };
+    event.preventDefault();
 
-      const init = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newFieldAgent)
-      };
+    const newFieldAgent = {
+      firstName,
+      middleName,
+      lastName,
+      dob,
+      heightInInches
+    };
 
-      fetch('http://localhost:8080/api/agent', init)
-        .then(response => {
-          if (response.status === 201 || response.status === 400) {
-            return response.json();
-          }
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newFieldAgent)
+    };
 
-          return Promise.reject('Something went wrong on the server :)');
-        })
-        .then(json => {
-          if (json.id) {
-            handleAdd(json);
-          } else {
-            setErrors(json);
-          }
-        })
-        .catch(err => console.error(err));
-    }else{
-      alert("entries are not valid.")
-    }
+    fetch('http://localhost:8080/api/agent', init)
+      .then(response => {
+        if (response.status === 201 || response.status === 400) {
+          return response.json();
+        }
+
+        return Promise.reject('Something went wrong on the server :)');
+      })
+      .then(json => {
+        if (json.agentId) {
+          handleAdd(json);
+        } else {
+          setErrors(json);
+        }
+      })
+      .catch(err => console.error(err));
   }
 
   return (
@@ -105,9 +77,9 @@ function AddFieldAgent({ handleAdd, handleCancel }) {
           <label htmlFor="lastName">Last Name:</label>
           <input className="form-control" type="text" id="lastName" name="lastName" value={lastName} onChange={handleLastNameChange} ></input>
           <label htmlFor="dob">Date of Birth:</label>
-          <input className="form-control" type="text" id="dob" name="dob" value={dob} onChange={handleDoBChange} onBlur={checkForValidDate} ></input>
+          <input className="form-control" type="date" id="dob" name="dob" value={dob} onChange={handleDoBChange} ></input>
           <label htmlFor="heightInInches">Height in Inches:</label>
-          <input className="form-control" type="text" id="heightInInches" name="heightInInches" value={heightInInches} onChange={handleHeightInInchesChange} onBlur={checkForHeightInInches} ></input>
+          <input className="form-control" type="number" id="heightInInches" name="heightInInches" value={heightInInches} onChange={handleHeightInInchesChange} ></input>
         </div>
         <div className="form-group">
           <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Add FieldAgent</button>

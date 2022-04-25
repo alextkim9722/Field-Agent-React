@@ -8,7 +8,7 @@ const VIEW = {
   LIST: 'list',
   ADD: 'add',
   EDIT: 'edit',
-  DELETE: 'delte'
+  DELETE: 'delete'
 };
 
 function FieldAgents() {
@@ -40,6 +40,7 @@ function FieldAgents() {
   const handleAdd = (newFieldAgent) => {
     setFieldAgents([...fieldAgents, newFieldAgent]);
     setView(VIEW.LIST);
+    document.location.reload();
   }
 
   const handleAddSelect = () => {
@@ -61,6 +62,7 @@ function FieldAgents() {
 
     setFieldAgents(replacementList);
     setView(VIEW.LIST);
+    document.location.reload();
   }
 
   const handleEditSelect = (fieldAgent) => {
