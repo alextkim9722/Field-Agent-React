@@ -9,7 +9,7 @@ const DEFAULT_FIELDAGENT = {
   heightInInches: ''
 };
 
-function UpdateFieldAgent({ fieldAgent = DEFAULT_FIELDAGENT, handleUpdate, handleCancel }) {
+function UpdateFieldAgent({ fieldAgent, handleUpdate, handleCancel }) {
 
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
@@ -113,16 +113,15 @@ function UpdateFieldAgent({ fieldAgent = DEFAULT_FIELDAGENT, handleUpdate, handl
       <h2 className="mt-5">Update FieldAgent</h2>
       <form>
         <div className="form-group">
-        <label htmlFor="firstName">First Name:</label>
-        <label htmlFor="firstName">First Name:</label>
+        <label htmlFor="firstName">First Name: {fieldAgent.firstName}</label>
           <input className="form-control" type="text" id="firstName" name="firstName" value={firstName} onChange={handleFirstNameChange} ></input>
-          <label htmlFor="middleName">Middle Name:</label>
+          <label htmlFor="middleName">Middle Name: {fieldAgent.middleName}</label>
           <input className="form-control" type="text" id="middleName" name="middleName" value={middleName} onChange={handleMiddleNameChange} ></input>
-          <label htmlFor="lastName">Last Name:</label>
+          <label htmlFor="lastName">Last Name: {fieldAgent.lastName}</label>
           <input className="form-control" type="text" id="lastName" name="lastName" value={lastName} onChange={handleLastNameChange} ></input>
-          <label htmlFor="dob">Date of Birth:</label>
+          <label htmlFor="dob">Date of Birth: {fieldAgent.dob}</label>
           <input className="form-control" type="text" id="dob" name="dob" value={dob} onChange={handleDoBChange} onBlur={checkForValidDate} ></input>
-          <label htmlFor="heightInInches">Height in Inches:</label>
+          <label htmlFor="heightInInches">Height in Inches: {fieldAgent.heightInInches}</label>
           <input className="form-control" type="text" id="heightInInches" name="heightInInches" value={heightInInches} onChange={handleHeightInInchesChange} onBlur={checkForHeightInInches} ></input>
         </div>
         <div className="form-group">
