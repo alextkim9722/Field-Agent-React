@@ -2,11 +2,11 @@ import { useState } from "react";
 
 function UpdateFieldAgent({ fieldAgent, handleUpdate, handleCancel }) {
 
-  const [firstName, setFirstName] = useState('');
-  const [middleName, setMiddleName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [dob, setDob] = useState('');
-  const [heightInInches, setHeightInInches] = useState('');
+  const [firstName, setFirstName] = useState(fieldAgent.firstName);
+  const [middleName, setMiddleName] = useState(fieldAgent.middleName);
+  const [lastName, setLastName] = useState(fieldAgent.lastName);
+  const [dob, setDob] = useState(fieldAgent.dob);
+  const [heightInInches, setHeightInInches] = useState(fieldAgent.heightInInches);
   const [errors, setErrors] = useState([]);
 
   const handleFirstNameChange = (event) => {
@@ -76,17 +76,16 @@ function UpdateFieldAgent({ fieldAgent, handleUpdate, handleCancel }) {
       <h2 className="mt-5">Update FieldAgent</h2>
       <form>
         <div className="form-group">
-        <label htmlFor="firstName">First Name: {fieldAgent.firstName}</label>
         <label htmlFor="firstName">First Name:</label>
-          <input className="form-control" type="text" id="firstName" name="firstName" value={firstName} onChange={handleFirstNameChange} ></input>
-          <label htmlFor="middleName">Middle Name:</label>
-          <input className="form-control" type="text" id="middleName" name="middleName" value={middleName} onChange={handleMiddleNameChange} ></input>
-          <label htmlFor="lastName">Last Name:</label>
-          <input className="form-control" type="text" id="lastName" name="lastName" value={lastName} onChange={handleLastNameChange} ></input>
-          <label htmlFor="dob">Date of Birth:</label>
-          <input className="form-control" type="date" id="dob" name="dob" value={dob} onChange={handleDoBChange} ></input>
-          <label htmlFor="heightInInches">Height in Inches:</label>
-          <input className="form-control" type="number" id="heightInInches" name="heightInInches" value={heightInInches} onChange={handleHeightInInchesChange} ></input>
+        <input className="form-control" type="text" id="firstName" name="firstName" value={firstName} onChange={handleFirstNameChange} ></input>
+        <label htmlFor="middleName">Middle Name:</label>
+        <input className="form-control" type="text" id="middleName" name="middleName" value={middleName} onChange={handleMiddleNameChange} ></input>
+        <label htmlFor="lastName">Last Name:</label>
+        <input className="form-control" type="text" id="lastName" name="lastName" value={lastName} onChange={handleLastNameChange} ></input>
+        <label htmlFor="dob">Date of Birth:</label>
+        <input className="form-control" type="date" id="dob" name="dob" value={dob} onChange={handleDoBChange} ></input>
+        <label htmlFor="heightInInches">Height in Inches:</label>
+        <input className="form-control" type="number" id="heightInInches" name="heightInInches" value={heightInInches} onChange={handleHeightInInchesChange} ></input>
         </div>
         <div className="form-group">
           <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Update FieldAgent</button>
