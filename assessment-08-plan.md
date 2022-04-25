@@ -22,7 +22,7 @@ _TODO_ Add time estimates to each of the top-level tasks
 * [ ] Add Bootstrap to the `public/index.html` file
   * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css)
   * [ ] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
-  * Estimate: 5-10 minutes
+  * Estimate: 0.5 minutes
 
 * [ ] Create `Agents` component (stub)
   * [ ] Update `App` component to render `Agents`
@@ -62,7 +62,7 @@ _TODO_ Add time estimates to each of the top-level tasks
    (see fetch function in the AddToDo component in the ToDos project)
   * [ ] On success, update the agents array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
   - Error messages will be displayed in an HTML element in the Add component 
-  * Estimate: 2 - 2.5 hours
+  * Estimate: 3 hours
 
 * [ ] Support deleting agents
   * [ ] Store the "delete agent ID" in a new state variable
@@ -72,12 +72,12 @@ _TODO_ Add time estimates to each of the top-level tasks
   * [ ] Add button click handler to perform the delete
   * [ ] Use `fetch` to `DELETE` the agent from the Field Agent API
   * [ ] On success, update the agents array (don't modify the original array!)
-  * Estimate: 1 hour 
+  * Estimate: 1.5 hour 
 
 * [ ] Conditionally render sections of the component
   * [ ] Add state variable to track the current view
   * [ ] Add conditional logic to the JSX to display the appropriate view
-  * Estimate: 0.5 - 1 hour
+  * Estimate: 1 hour
 
 **Make sure that my GitHub repo is updated!**
 
@@ -100,7 +100,7 @@ _TODO_ Add time estimates to each of the top-level tasks
   * [ ] Update the add agent form
   * [ ] Update the edit agent form
   * [ ] Update the delete agent confirmation
-  * Estimate: 1.5 hours
+  * Estimate: 2 hours
 
 * [ ] Use the provided test plan to manually test the application
 
